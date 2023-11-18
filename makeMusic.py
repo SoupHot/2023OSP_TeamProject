@@ -17,7 +17,11 @@ n13 = note.Note("C5", quarterLength=1) # 도
 
 # 음표를 포함하는 스트림 생성
 stream1 = stream.Stream()
-stream1.append([n1, n2, n3, n4, n5, n6, n7, n8, n9, n10, n11, n12, n13])
+
+# 중복 포함하여 음표 추가
+for note_obj in [n5, n3, n1, n3, n5, n5, n5]:
+    cloned_note = note_obj.__deepcopy__()  # music21 객체를 복제
+    stream1.append(cloned_note)  # 복제된 객체를 스트림에 추가
 
 # 템포 설정
 stream1.append(tempo.MetronomeMark(number=120))
@@ -26,5 +30,5 @@ stream1.append(tempo.MetronomeMark(number=120))
 output_folder = "C:/Users/8060s/OneDrive/문서/2학년 2학기/오픈소스 프로그래밍/오픈 소스 팀플/MakeTestMusic/midiFile/"
 
 # 스트림을 미디 파일로 저장
-file_path = output_folder + "testMusic.mid"
+file_path = output_folder + "airplane.mid"
 stream1.write("midi", file_path)
