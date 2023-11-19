@@ -19,7 +19,7 @@ n13 = note.Note("C5", quarterLength=1) # 도
 stream1 = stream.Stream()
 
 # 중복 포함하여 음표 추가
-for note_obj in [n5, n3, n1, n3, n5, n5, n5]:
+for note_obj in [n5, n3, n1, n3, n5, n5, n5, n3, n3, n3, n5, n8, n8, n5, n3, n1, n3, n5, n5, n5, n3, n3, n5, n3, n1]:
     cloned_note = note_obj.__deepcopy__()  # music21 객체를 복제
     stream1.append(cloned_note)  # 복제된 객체를 스트림에 추가
 
