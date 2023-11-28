@@ -4,10 +4,10 @@ from pydub import AudioSegment
 from pydub.generators import Sine
 
 # MIDI 파일 경로
-midi_file_path = r"C:\Users\8060s\OneDrive\문서\2학년 2학기\오픈소스 프로그래밍\오픈 소스 팀플\MakeTestMusic\midiFile\airplane.mid"
+midi_file_path = r"C:\\Users\\hyw51\\OneDrive\\바탕 화면\\OSP\\2023OSP_TeamProject\airplane.mid"
 
 # WAV 파일 저장 경로
-wav_file_path = r"C:\Users\8060s\OneDrive\문서\2학년 2학기\오픈소스 프로그래밍\오픈 소스 팀플\MakeTestMusic\toWAV\airplane.wav"
+wav_file_path = r"C:\\Users\\hyw51\\OneDrive\\바탕 화면\\OSP\\2023OSP_TeamProject\airplane.wav"
 
 def note_to_freq(note, concert_A=440.0):
     '''
