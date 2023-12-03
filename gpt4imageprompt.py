@@ -1,12 +1,9 @@
-# !pip install cohere tiktoken
-# !pip install openai==0.28
-# !pip install --upgrade openai
 import openai
 import base64
 import requests
 
 def analyze_image(api_key, image):
-    # Function to encode the image
+    # Streamlit image에서 제공하는 이미지를 잘 읽을 수 있도록하는 함수.(수정)
     def encode_image(image_file):
         return base64.b64encode(image_file.read()).decode('utf-8')
 
