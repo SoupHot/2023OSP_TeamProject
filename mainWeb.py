@@ -27,7 +27,7 @@ def get_music(prompt, duration):
 st.title('OSP Team Project')
 st.subheader('2023OSP 오픈더소스')
 
-duration = st.slider('음악의 길이 선택해 주세요.', 0, 60, 30)
+duration = st.slider('음악의 길이 선택해 주세요.', 1, 60, 30)
 
 if 'img_file' not in st.session_state:
     st.session_state['img_file'] = None
