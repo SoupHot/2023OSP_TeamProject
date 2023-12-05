@@ -23,7 +23,7 @@ def analyze_image(api_key, image):
                 "content": [
                     {
                         "type": "text",
-                        "text": "Look at this image and describe the mood and behavior of this image in 100 or 200 characters, no double or single quotes."
+                        "text": "Look at this image, analyze the mood, emotion, and behavior in this image, and recommend a music genre. Explain it in less than 200 characters (no double or single quotes)."
                     },
                     {
                         "type": "image_url",

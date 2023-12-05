@@ -6,7 +6,6 @@ import scipy
 import time
 
 app = FastAPI()
-# uvicorn api:app --reload --host=0.0.0.0 --port=7342
 
 @app.get("/")
 def test():

@@ -25,15 +25,28 @@ def get_music(prompt, duration):
         return None, None
 
 st.title('OSP Team Project')
-st.subheader('2023OSP 오픈더소스')
+st.subheader('2023 OSP 오픈더소스')
 
-duration = st.slider('음악의 길이 선택해 주세요.', 1, 60, 30)
+if 'duration' not in st.session_state:
+    st.session_state['duration'] = None
 
 if 'img_file' not in st.session_state:
     st.session_state['img_file'] = None
 
+if 'duration_selected' not in st.session_state:
+    st.session_state['duration_selected'] = False
+
+if st.session_state['duration_selected'] == False:
+    st.session_state['duration'] = st.slider('음악의 길이를 선택해 주세요.', 1, 60, 30)
+    duration_select_button = st.button('Submit', key='duration_button')
+    if st.session_state['duration'] is not None and duration_select_button:
+        st.session_state['duration_selected'] = True
+        st.rerun()
+    else:
+        st.stop()
+
 if 'img_uploaded' not in st.session_state:
-    st.session_state['img_file'] = st.file_uploader('이미지를 업로드 하세요.', type=['png', 'jpg', 'jpeg'])
+    st.session_state['img_file'] = st.file_uploader('이미지를 업로드해 주세요.', type=['png', 'jpg', 'jpeg'])
     if st.session_state['img_file'] is not None:
         st.session_state['img_uploaded'] = True
 
@@ -42,14 +55,15 @@ music_gen = st.button('음악 생성', key='music_gen')
 if music_gen and st.session_state['img_file']:    
     with st.spinner('음악을 생성하는 중입니다...'):
         image_description = analyze_image(st.secrets["API_KEY"], st.session_state['img_file'])
-        file_path, response_status = get_music(image_description, duration)
+        file_path, response_status = get_music(image_description, st.session_state['duration'])
 
     if file_path and response_status is not None:
         st.image(st.session_state['img_file'])
         st.text(image_description)
         st.audio(file_path, format='audio/wav')
     else:
-        st.error("잠시 후 다시 시도해주세요.")
+        st.error("잠시 후 다시 시도해 주세요.")
 
 elif music_gen and not st.session_state['img_file']:
-    st.warning('이미지를 업로드 해주세요.')
+        st.warning('이미지를 업로드해 주세요.')
+        st.stop()
