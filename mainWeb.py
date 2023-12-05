@@ -24,8 +24,9 @@ def get_music(prompt, duration):
     except Exception as e:
         return None, None
 
-st.title('OSP Team Project')
-st.subheader('2023 OSP 오픈더소스')
+st.title('Pic To Music')
+st.header('사진과 함께 음악을 즐겨보세요.')
+st.subheader('OSP Team Project - 2023 OSP 오픈더소스')
 
 if 'duration' not in st.session_state:
     st.session_state['duration'] = None
@@ -46,7 +47,7 @@ if st.session_state['duration_selected'] == False:
         st.stop()
 
 if 'img_uploaded' not in st.session_state:
-    st.session_state['img_file'] = st.file_uploader('이미지를 업로드해 주세요.', type=['png', 'jpg', 'jpeg'])
+    st.session_state['img_file'] = st.file_uploader('이미지를 업로드해 주세요(이 서비스는 사용자의 이미지를 저장하지 않습니다.).', type=['png', 'jpg', 'jpeg'])
     if st.session_state['img_file'] is not None:
         st.session_state['img_uploaded'] = True
 
@@ -59,8 +60,10 @@ if music_gen and st.session_state['img_file']:
 
     if file_path and response_status is not None:
         st.image(st.session_state['img_file'])
-        st.text(image_description)
+        # st.text(image_description)
         st.audio(file_path, format='audio/wav')
+        st.info('서비스에 대한 평가를 설문으로 남겨주세요.')
+        st.link_button("설문 참여", "https://docs.google.com/forms/d/e/1FAIpQLSe98TGLm_obqZcz7mlD8EKqatggfEm77bt-Lmt1zgGAd55-0A/viewform?usp=sf_link")
     else:
         st.error("잠시 후 다시 시도해 주세요.")
 
