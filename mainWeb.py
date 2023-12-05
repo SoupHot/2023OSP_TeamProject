@@ -26,7 +26,7 @@ def get_music(prompt, duration):
 
 st.title('Pic To Music')
 st.header('사진과 함께 음악을 즐겨보세요.')
-st.subheader('OSP Team Project - 2023 OSP 오픈더소스')
+st.subheader('OSP Team Project - 오픈더소스')
 
 if 'duration' not in st.session_state:
     st.session_state['duration'] = None
