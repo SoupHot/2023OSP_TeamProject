@@ -25,7 +25,6 @@ def get_music(prompt, duration):
         return None, None
 
 st.title('Pic To Music')
-# st.subheader('OSP Team Project - 오픈더소스')
 st.subheader('사진과 음악을 함께 즐겨보세요.')
 st.markdown('추억이 담긴 사진을 업로드하면, 그 사진과 함께 추억할 수 있는 음악을 제공합니다.')
 st.subheader(" ", divider='gray')
