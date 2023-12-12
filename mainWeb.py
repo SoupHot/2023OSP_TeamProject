@@ -50,6 +50,7 @@ if st.session_state['duration_selected'] == False:
 if 'img_uploaded' not in st.session_state:
     st.session_state['img_file'] = st.file_uploader('이미지를 업로드해 주세요(이 서비스는 사용자의 이미지를 저장하지 않습니다.).', type=['png', 'jpg', 'jpeg'])
     if st.session_state['img_file'] is not None:
+        st.image(st.session_state['img_file'])
         st.session_state['img_uploaded'] = True
 
 music_gen = st.button('음악 생성', key='music_gen')
